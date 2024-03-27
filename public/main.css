@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    padding-top: 3vh;
+    width: 100%;
+    margin: auto;
+    columns: 5;
+    column-gap: 20px;
+    cursor: pointer;
+  }
+  .container .box {
+    width: 100%;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    border-radius: 15px;
+  }
+  .container img {
+    max-width: 100%;
+    min-width: 100%;
+    border-radius: 10px;
+  }
+  
+  img:hover {
+    opacity: 0.95;
+  }
+  
+  .caption {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px;
+  }
+  .feed{
+    margin: 20px 0px;
+    border-radius: 18px;
+    height: 150%;
+  }
+.searchterm {
+    padding-left: 20px;
+    font-weight: bolder;
+}
+
+
+  @media (max-width: 1427px) {
+    .container {
+      columns: 5;
+      width: calc(100% - 40px);
+    }
+  }
+  @media (max-width: 1200px) {
+    .container {
+      columns: 4;
+    }
+  }
+  
+  @media (max-width: 1000px) {
+    .container {
+      columns: 3;
+    }
+  
+    body {
+      overflow-x: hidden;
+    }
+  }
+  
+  @media (max-width: 786px) {
+    .container {
+      columns: 2;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      columns: 1;
+    }
+  }

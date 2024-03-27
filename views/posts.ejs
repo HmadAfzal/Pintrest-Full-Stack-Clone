@@ -1,0 +1,16 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <div class="main">
+        <% posts.map((post)=>{ %>
+            <a href="/posts/<%=post._id%>">
+                <img src="<%= post.img.url %>" alt="">
+                <div class="flex items-center"><div class="w-8 h-8 bg-zinc-400 rounded-full overflow-hidden my-4">
+                    <img class="w-full h-full object-cover"
+                        src="<%=post.owner.pfp.url%>" alt="hhh">
+                </div> <div class="pl-2 font-semibold "><%=post.owner.username%></div></div>
+                
+                
+            </a>
+
+            <% }) %>
+    </div>

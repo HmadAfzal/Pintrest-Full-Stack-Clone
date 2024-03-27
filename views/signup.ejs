@@ -1,0 +1,21 @@
+<% layout('/layouts/boilerplate.ejs') %>
+<form action="/signup" method="post" class="max-w-sm mx-auto pt-12" enctype="multipart/form-data">
+    <h1 class="text-4xl font-bold pb-8">SignUp to Pintrest</h1>
+    <div class="mb-5">
+        <input type="file" name="pfp" required>
+    </div>
+    <div class="mb-5">
+        <label for="username" class="block mb-2 text-sm font-bold text-gray-900 ">Username</label>
+        <input required type="text" name="username" id="" placeholder="eg:john_doe 😎" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    </div>
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-bold text-gray-900 ">Email</label>
+      <input required name="email" id="" cols="30" rows="10" placeholder="email 💌" type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+  </div>
+    <div>
+        <label for="password" class="block mb-2 text-sm font-bold text-gray-900 ">Password</label>
+        <input required type="password" name="password" placeholder="Password 👀" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
+    </div>
+    <button class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-12 py-2.5 mx-8 text-center mt-6 ml-0 w-full">signUp</button>
+   <div><p class="text-black font-medium text-sm px-12 py-2.5 mx-8 text-center mt-4">Already have an account? <a href="/login" class="text-red-700 font-medium text-sm text-center mt-6 ml-0">Login</a></p></div> 
+  </form>

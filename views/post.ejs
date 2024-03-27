@@ -1,0 +1,82 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+    <div class="h-[80vh]  w-[100vw] flex items-center justify-center">
+        <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-[2rem] shadow md:flex-row md:max-w-[50vw]  h-[30vw] w-[50vw]">
+            <img class="object-cover w-full h-full overflow-hidden rounded-l-[2rem]" src="<%=post.img.url%>" alt="">
+            <div class="flex flex-col justify-between px-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                    <%=post.title%>
+                </h5>
+                <p class="my-3 font-normal text-gray-700"><%=post.description%></p>
+                <div class="flex items-center my-3"><div class="w-8 h-8 bg-zinc-400 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover"
+                        src="<%=post.owner.pfp.url%>" alt="hhh">
+                </div> <div class="pl-2 font-semibold "><%=post.owner.username%></div></div>
+               
+               <% if(currUser && currUser._id.equals(post.owner._id)){%>
+                <div class="flex  items-center pt-2">
+                    <a href="/edit/<%= post._id %>"
+                        class="class=text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 ">Edit
+                        post</a>
+                    <form action="/delete/<%=post._id%>?_method=DELETE" method="post">
+                        <button
+                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 mx-4 text-center">Delete</button>
+                    </form>
+                </div> 
+          <%  } %>
+
+
+                <div class="overflow-y-scroll h-[10vw] w-[22vw] pl-8 mt-2 custom-scrollbar">
+                    <% for(let comment of post.comments){ %>
+                        <div class="mb-2 mt-4 text-sm text-gray-500">
+                            <p>  Posted by: <%=comment.owner.username%> 
+                            </p>
+                        </div>
+                        <div class="flex ">
+                            <p class="mb-2 text-black">
+                                <%=comment.Comment%>
+                            </p>
+                           <% if(currUser && currUser._id.equals(comment.owner._id)){ %>
+
+                         
+                            <form action="/posts/<%= post._id %>/comment/<%=comment._id%>?_method=DELETE" method="post">
+                                <button
+                                    class="text-red-700   focus:outline-none focus:ring-4 focus:ring-red-300 font-small rounded-md text-semibold text-center ml-8 ">Delete</button>
+                            </form> 
+                         <% }%>
+                        </div>
+                        <% } %>
+                </div>
+
+
+
+                <form class="mt-6" action="/posts/<%=post._id%>/comment" method="post">
+                    <div class="flex items-center  rounded-lg ">
+                        <button type="button"
+                            class="p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 ">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13.408 7.5h.01m-6.876 0h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM4.6 11a5.5 5.5 0 0 0 10.81 0H4.6Z" />
+                            </svg>
+                            <span class="sr-only">Add emoji</span>
+                        </button>
+                        <input required id="comment" name="comments[comment]" rows="1"
+                            class="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                            placeholder="Your message...">
+                        <button type="submit"
+                            class="inline-flex justify-center p-2 text-red-600 rounded-full cursor-pointer hover:bg-red-100">
+                            <svg class="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                                <path
+                                    d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z" />
+                            </svg>
+                            <span class="sr-only">Send message</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
